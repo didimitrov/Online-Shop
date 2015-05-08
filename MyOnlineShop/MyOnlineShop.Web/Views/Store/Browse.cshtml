@@ -1,4 +1,6 @@
-﻿@model MyOnlineShop.Models.Category
+﻿@using System.Web.Mvc.Html
+@using System.Web.Razor
+@model MyOnlineShop.Models.Category
 
 @{
     ViewBag.Title = "Browse";
@@ -7,3 +9,16 @@
 <h2>Browse</h2>
 
 <h2>Browsing category: @Model.Name</h2>
+
+<ul>
+    @foreach (var item in Model.Products)
+    {
+        @*if (Model.Products == null)
+        {
+            <h4>Empty category</h4>
+        }*@
+        <li>
+            @Html.ActionLink(item.Title, "Details", new { id = item.Id });
+        </li>
+}
+</ul>
