@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using MyOnlineShop.Data.Migrations;
 using MyOnlineShop.Models;
+using MyOnlineShop.Models.ShopingCartModels;
 
 namespace MyOnlineShop.Data
 {
@@ -15,6 +16,10 @@ namespace MyOnlineShop.Data
 
         public IDbSet<Product> Products { get; set; }
         public IDbSet<Category> Categories { get; set; }
+
+        public DbSet<Cart>Carts { get; set; }
+        public DbSet<Order> Orders{ get; set; }
+        public DbSet<OrderDetail>OrderDetails { get; set; }
 
         public static ApplicationDbContext Create()
         {
