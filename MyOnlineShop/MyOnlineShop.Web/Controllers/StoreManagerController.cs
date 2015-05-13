@@ -7,7 +7,7 @@ using MyOnlineShop.Data;
 
 namespace MyOnlineShop.Web.Controllers
 {
-    public class StoreMenagerController : Controller
+    public class StoreManagerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

@@ -7,19 +7,19 @@ namespace MyOnlineShop.Models
     {
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "Title is required")]
-        //[StringLength(160)]
+        [Required(ErrorMessage = "Title is required")]
+        [StringLength(160)]
         public string Title { get; set; }
 
         public virtual Category Category { get; set; }
 
-        //[DisplayName("Category")]
+        [DisplayName("Category")]
         public int CategoryId { get; set; }
 
-        //[Required(ErrorMessage = "Price is required")]
+        [Required(ErrorMessage = "Price is required")]
         public decimal Price { get; set; }
 
-        //[DisplayName("Album Art URL")]
+        [DisplayName("Album Art URL")]
         public string ProductArtUrl { get; set; }
         
        
