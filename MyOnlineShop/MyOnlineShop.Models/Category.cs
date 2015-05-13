@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyOnlineShop.Models
 {
@@ -11,6 +12,7 @@ namespace MyOnlineShop.Models
 
         public int Id { get; set; }
 
+        [Display(Name = "Category")]
         public string Name { get; set; }
 
         public string Description { get; set; }
