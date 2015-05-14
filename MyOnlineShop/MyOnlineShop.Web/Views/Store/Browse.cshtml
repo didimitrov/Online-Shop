@@ -6,7 +6,7 @@
     ViewBag.Title = "Browse";
 }
 
-<h2>Browse</h2>
+
 
 <h2>Browsing category: @Model.Name</h2>
 
@@ -18,7 +18,7 @@
             <h4>Empty category</h4>
         }*@
         <li>
-            @Html.ActionLink(item.Title, "Details", new { id = item.Id });
+            @Html.ActionLink(item.Title, "Details", new { id = item.Id })
         </li>
 }
 </ul>
