@@ -42,7 +42,7 @@ namespace MyOnlineShop.Web.Controllers
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
             // Get the name of the album to display confirmation
-            var albumName = db.Carts
+            var productName = db.Carts
                 .Single(item => item.RecordId == id).Product.Title;
 
             // Remove from cart
@@ -51,7 +51,7 @@ namespace MyOnlineShop.Web.Controllers
             // Display the confirmation message
             var results = new ShoppingCartRemoveViewModel
             {
-                Message = Server.HtmlEncode(albumName) +
+                Message = Server.HtmlEncode(productName) +
                           " has been removed from your shopping cart.",
                 CartTotal = cart.Total(),
                 CartCount = cart.GetCount(),

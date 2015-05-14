@@ -11,6 +11,7 @@ namespace MyOnlineShop.Models.ShopingCartModels
     {
         ApplicationDbContext db = new ApplicationDbContext();
         public string ShopingCartId { get; set; }
+
         public const string CartSessionKey = "CartID";
 
         public static ShoppingCart GetCart(HttpContextBase context)
