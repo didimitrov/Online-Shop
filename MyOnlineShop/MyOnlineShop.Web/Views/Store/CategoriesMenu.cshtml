@@ -1,0 +1,8 @@
+﻿@model IEnumerable<MyOnlineShop.Models.Category>
+
+@foreach (var category in Model)
+{
+    <li>
+        @Html.ActionLink(category.Name,"Browse","Store", new {name = category.Name},null)
+    </li>
+}
