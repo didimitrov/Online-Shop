@@ -96,16 +96,16 @@ namespace MyOnlineShop.Models.ShopingCartModels
 
         public decimal Total()
         {
-            //var total = (from cartItems in db.Carts
-            //                  where cartItems.CartId == ShopingCartId
-            //                  select (int?)cartItems.Count *
-            //                  cartItems.Product.Price).Sum();
+            var total = (from cartItems in db.Carts
+                         where cartItems.CartId == ShopingCartId
+                         select (int?)cartItems.Count *
+                         cartItems.Product.Price).Sum();
 
-            var total =
-                db.Carts.Where(cart => cart.CartId == ShopingCartId)
-                .Select(cart => cart.Count * cart.Product.Price).Sum();
+            //var total =
+            //    db.Carts.Where(cart => cart.CartId == ShopingCartId)
+            //    .Select(cart => cart.Count * cart.Product.Price).Sum();
 
-            return total;
+            return total ?? decimal.Zero;
         }
         public int CreateOrder(Order order)
         {
