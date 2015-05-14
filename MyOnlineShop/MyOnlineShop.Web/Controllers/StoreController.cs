@@ -36,5 +36,12 @@ namespace MyOnlineShop.Web.Controllers
 
             return View(product);
         }
+
+        [ChildActionOnly]
+        public ActionResult CategoriesMenu()
+        {
+            var categories = _db.Categories.ToList();
+            return PartialView(categories);
+        }
     }
 }
