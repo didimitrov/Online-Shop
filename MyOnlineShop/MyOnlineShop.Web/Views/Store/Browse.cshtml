@@ -18,7 +18,9 @@
             <h4>Empty category</h4>
         }*@
         <li>
-            @Html.ActionLink(item.Title, "Details", new { id = item.Id })
+            @Html.ActionLink(item.Title, "Details", new {id = item.Id})
+            <img alt="@item.Title"
+                 src="@item.ProductArtUrl" />
         </li>
-}
+    }
 </ul>
