@@ -7,10 +7,10 @@ using MyOnlineShop.Data;
 
 namespace MyOnlineShop.Models.ShopingCartModels
 {
-    public class ShoppingCart
+    public partial class ShoppingCart
     {
         ApplicationDbContext db = new ApplicationDbContext();
-       public string ShopingCartId { get; set; }
+        public string ShopingCartId { get; set; }
         public const string CartSessionKey = "CartID";
 
         public static ShoppingCart GetCart(HttpContextBase context)
@@ -28,7 +28,7 @@ namespace MyOnlineShop.Models.ShopingCartModels
         public void AddToCart(Product product)
         {
             var item = db.Carts.SingleOrDefault(x => x.CartId == ShopingCartId && x.ProductId == product.Id);
-            if (item ==null)
+            if (item == null)
             {
                 item = new Cart
                 {
@@ -52,7 +52,7 @@ namespace MyOnlineShop.Models.ShopingCartModels
             var itemCount = 0;
             if (item != null)
             {
-                if (item.Count>1)
+                if (item.Count > 1)
                 {
                     item.Count--;
                     itemCount = item.Count;
@@ -87,8 +87,8 @@ namespace MyOnlineShop.Models.ShopingCartModels
         {
             // Get the count of each item in the cart and sum them up
             var count = (from cartItems in db.Carts
-                          where cartItems.CartId == ShopingCartId
-                          select (int?)cartItems.Count).Sum();
+                         where cartItems.CartId == ShopingCartId
+                         select (int?)cartItems.Count).Sum();
             // Return 0 if all entries are null
             return count ?? 0;
         }
@@ -102,7 +102,7 @@ namespace MyOnlineShop.Models.ShopingCartModels
 
             var total =
                 db.Carts.Where(cart => cart.CartId == ShopingCartId)
-                .Select(cart => cart.Count*cart.Product.Price).Sum();
+                .Select(cart => cart.Count * cart.Product.Price).Sum();
 
             return total;
         }

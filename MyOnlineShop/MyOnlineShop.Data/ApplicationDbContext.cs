@@ -4,6 +4,7 @@ using MyOnlineShop.Data.Migrations;
 using MyOnlineShop.Models;
 using MyOnlineShop.Models.ShopingCartModels;
 
+
 namespace MyOnlineShop.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -16,10 +17,9 @@ namespace MyOnlineShop.Data
 
         public IDbSet<Product> Products { get; set; }
         public IDbSet<Category> Categories { get; set; }
-
-        public DbSet<Cart>Carts { get; set; }
-        public DbSet<Order> Orders{ get; set; }
-        public DbSet<OrderDetail>OrderDetails { get; set; }
+        public IDbSet<Cart> Carts { get; set; }
+        public IDbSet<Order> Orders{ get; set; }
+        public IDbSet<OrderDetail> OrderDetails { get; set; }
 
         public static ApplicationDbContext Create()
         {
