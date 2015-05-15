@@ -6,28 +6,37 @@
 
 <h2>Details</h2>
 <hr />
-<img alt="@Model.Title"
-     src="@Model.ProductArtUrl" />
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="@Model.ProductArtUrl" alt="@Model.Title">
+            <div class="caption">
+                <h3>@Html.ActionLink(Model.Title, "Details", new { id = Model.Id })</h3>
+                <p>
+                    <em>Name:</em>
+                    <b>@Model.Title</b>
+                </p>
+                <p>
+                    <em>Category:</em>
+                    <b>@Model.Category.Name</b>
+                </p>
+                <p>
+                    <em>Price:</em>
+                    <b> $ @Model.Price</b>
+                </p>
 
-<div id="prduct-details">
-  
-    <em>Name:</em>
-    <h4><b>
-            @Model.Title
-        </b></h4>
-   
-    <em>Category:</em>
-    <h4><b>
-            @Model.Category.Name
-        </b></h4>
-    
-    <em>Price:</em>
-    <h4>
-        <b> $ @Model.Price</b>
-    </h4>
-    
-    <p>
-        @Html.ActionLink("Add to Cart","AddToCart","ShoppingCart", new{id=Model.Id},new{@class="btn btn-primary"})
-    </p>
+                <p>
+                    @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
+  
+    
+   
+   
+    
+   
+
 
