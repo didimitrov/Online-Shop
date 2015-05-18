@@ -92,6 +92,7 @@
     <Compile Include="ShopingCartModels\Order.cs" />
     <Compile Include="ShopingCartModels\OrderDetail.cs" />
     <Compile Include="ShopingCartModels\ShoppingCart.cs" />
+    <Compile Include="Vote.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

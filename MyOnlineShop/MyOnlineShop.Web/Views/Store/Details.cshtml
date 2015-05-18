@@ -24,6 +24,21 @@
                     <em>Price:</em>
                     <b> $ @Model.Price</b>
                 </p>
+                <p>hehehehehehhehehe</p>
+                <div>
+                    Votes: <span id="article-votes">@Model.Votes</span>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Ajax.ActionLink("Vote", "Vote", new { id = Model.Id }, new AjaxOptions
+                        {
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "article-votes",
+                            HttpMethod = "Post",
+                            OnSuccess = "hideVoteButton"
+                        },
+                            new { id = "vote-button", @class = "btn btn-danger" })
+                    }
+                </div>
 
                 <p>
                     @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.Id }, new { @class = "btn btn-primary" })
@@ -33,7 +48,18 @@
     </div>
 </div>
   
-    
+    @section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function commentPostFailure() {
+            alert("Error");
+        }
+
+        function hideVoteButton() {
+            $("#vote-button").hide();
+        }
+    </script>
+}
    
    
     

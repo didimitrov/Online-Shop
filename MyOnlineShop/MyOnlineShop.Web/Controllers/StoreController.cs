@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MyOnlineShop.Data;
 using MyOnlineShop.Models;
 
@@ -42,6 +44,21 @@ namespace MyOnlineShop.Web.Controllers
         {
             var categories = _db.Categories.ToList();
             return PartialView(categories);
+        }
+
+        public ActionResult Vote(int id)
+        {
+            var userId = User.Identity.GetUserId();
+
+           _db.Products.Find(id).Votes.Add(new Vote()
+           {
+               ProductId = id,
+               VotedById = userId
+           });
+            _db.SaveChanges();
+
+            var votes = _db.Products.Find(id).Votes.Count();
+            return Content(votes.ToString(CultureInfo.InvariantCulture));
         }
     }
 }

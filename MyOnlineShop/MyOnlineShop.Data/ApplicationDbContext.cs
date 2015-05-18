@@ -17,6 +17,8 @@ namespace MyOnlineShop.Data
 
         public IDbSet<Product> Products { get; set; }
         public IDbSet<Category> Categories { get; set; }
+        public IDbSet<Vote> Votes { get; set; }
+
         public IDbSet<Cart> Carts { get; set; }
         public IDbSet<Order> Orders{ get; set; }
         public IDbSet<OrderDetail> OrderDetails { get; set; }
