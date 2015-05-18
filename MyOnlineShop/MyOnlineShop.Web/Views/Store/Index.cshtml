@@ -9,9 +9,9 @@
     Select from @Model.Count()
     categories:
 </p>
-<ul>
+
     @foreach (var category in Model)
     {
-        <li>@Html.ActionLink(category.Name,"Browse",new { category = category.Name })</li>
+        <h3>@Html.ActionLink(category.Name,"Browse",new { category = category.Name })</h3>
     }
-</ul>
+

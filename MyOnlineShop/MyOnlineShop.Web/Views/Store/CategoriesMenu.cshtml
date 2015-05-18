@@ -1,0 +1,12 @@
+﻿@model IEnumerable<MyOnlineShop.Models.Category>
+
+
+    <ul class="nav nav-tabs nav-justified label-default ">
+        @foreach (var category in Model)
+        {
+            <li style="">
+                @Html.ActionLink(category.Name, "Browse", "Store", new { category = category.Name }, new { @style = "color: black;" })
+            </li>
+
+        }
+    </ul>

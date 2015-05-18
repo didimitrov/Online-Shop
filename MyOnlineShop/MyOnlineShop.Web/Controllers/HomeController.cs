@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyOnlineShop.Data;
 
 namespace MyOnlineShop.Web.Controllers
 {
@@ -10,21 +11,14 @@ namespace MyOnlineShop.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var db = new ApplicationDbContext();
+
+            var products = db.Products.OrderBy(x => x.Id).ToList();
+            var minId = db.Products.Min(x => x.Id);
+            ViewBag.ProductMinId = minId;
+            return View(products);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+      
     }
 }
