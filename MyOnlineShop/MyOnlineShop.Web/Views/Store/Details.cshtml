@@ -1,4 +1,4 @@
-﻿@model MyOnlineShop.Models.Product
+﻿@model MyOnlineShop.Web.ViewModels.ProductDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -24,10 +24,10 @@
                     <em>Price:</em>
                     <b> $ @Model.Price</b>
                 </p>
-                <p>hehehehehehhehehe</p>
+                
                 <div>
                     Votes: <span id="article-votes">@Model.Votes</span>
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && Model.UserCanVote)
                     {
                         @Ajax.ActionLink("Vote", "Vote", new { id = Model.Id }, new AjaxOptions
                         {
@@ -38,7 +38,7 @@
                         },
                             new { id = "vote-button", @class = "btn btn-danger" })
                     }
-                </div>
+                </div><br />
 
                 <p>
                     @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.Id }, new { @class = "btn btn-primary" })
@@ -47,6 +47,8 @@
         </div>
     </div>
 </div>
+
+
   
     @section scripts{
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
@@ -56,7 +58,7 @@
         }
 
         function hideVoteButton() {
-            $("#vote-button").hide();
+            $("#vote-button").hide().cache();
         }
     </script>
 }

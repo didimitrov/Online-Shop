@@ -36,6 +36,20 @@
                     <em>Price:</em>
                     <b> $ @item.Price</b>
                 </p>
+                @*<div>
+                    Votes: <span id="article-votes">@item.Votes.Count</span>
+                    @if (User.Identity.IsAuthenticated)  //todo: CategoryViewModel
+                    {
+                        @Ajax.ActionLink("Vote", "Vote", new { id = item.Id }, new AjaxOptions
+                        {
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "article-votes",
+                            HttpMethod = "Post",
+                            OnSuccess = "hideVoteButton"
+                        },
+                            new { id = "vote-button", @class = "btn btn-danger" })
+                    }
+                </div><br />*@
 
                 <p>
                     @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.Id }, new { @class = "btn btn-primary" })
@@ -45,4 +59,15 @@
     </div>
     }
 </div>  
+@section scripts{
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function commentPostFailure() {
+            alert("Error");
+        }
 
+        function hideVoteButton() {
+            $("#vote-button").hide();
+        }
+    </script>*@
+}

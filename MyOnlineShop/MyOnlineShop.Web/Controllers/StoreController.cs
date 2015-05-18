@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using MyOnlineShop.Data;
 using MyOnlineShop.Models;
+using MyOnlineShop.Web.ViewModels;
 
 namespace MyOnlineShop.Web.Controllers
 {
@@ -33,10 +34,23 @@ namespace MyOnlineShop.Web.Controllers
         // GET: /Store/Details
         public ActionResult Details(int id)
         {
+            var userId = User.Identity.GetUserId();
             var product = _db.Products.Find(id);
-            //var product = new Product {Title = "Ql", Id = id};
 
-            return View(product);
+            var productViewModel = new ProductDetailsViewModel
+            {
+                Category = product.Category,
+                CategoryId = product.CategoryId,
+                Id = product.Id,
+                Price = product.Price,
+                ProductArtUrl = product.ProductArtUrl,
+                Title = product.Title,
+                //todo change db with repo
+                UserCanVote = _db.Votes.Any(pesho => pesho.VotedById == userId),
+                Votes = product.Votes.Count()
+            };
+
+            return View(productViewModel);
         }
 
         [ChildActionOnly]
@@ -49,16 +63,26 @@ namespace MyOnlineShop.Web.Controllers
         public ActionResult Vote(int id)
         {
             var userId = User.Identity.GetUserId();
+            var canVote = !_db.Votes.Any(x => x.ProductId == id && x.VotedById == userId);
 
-           _db.Products.Find(id).Votes.Add(new Vote()
-           {
-               ProductId = id,
-               VotedById = userId
-           });
-            _db.SaveChanges();
+            if (canVote)
+            {
+                _db.Products.Find(id).Votes.Add(new Vote()
+                {
+                    ProductId = id,
+                    VotedById = userId
+                });
+                _db.SaveChanges();
+            }
 
             var votes = _db.Products.Find(id).Votes.Count();
-            return Content(votes.ToString(CultureInfo.InvariantCulture));
+
+            if (votes != 0)
+            {
+                return Content(votes.ToString(CultureInfo.InvariantCulture));
+            }
+            return Content("0");
+
         }
     }
 }
