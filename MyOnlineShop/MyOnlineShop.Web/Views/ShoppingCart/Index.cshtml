@@ -9,7 +9,7 @@
 <h2>Review your cart: </h2>
 
 
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
             Product Name
@@ -23,10 +23,11 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model.CartItems) {
+    @foreach (var item in Model.CartItems)
+    {
         <tr id="row-@item.RecordId">
             <td>
-                @Html.ActionLink(item.Product.Title,"Details","Store", new {id = item.Product.Id},null)
+                @Html.ActionLink(item.Product.Title, "Details", "Store", new { id = item.Product.Id }, null)
             </td>
             <td>
                 @item.Product.Price
@@ -38,11 +39,11 @@
                 <a href="#" class="RemoveLink" data-id="@item.RecordId">Remove</a>
 
                 @*@Ajax.ActionLink("Remove", "RemoveFromCart", new{id=item.RecordId},new AjaxOptions
-            {
-                HttpMethod = "POST",
-                InsertionMode = InsertionMode.InsertAfter,
-                
-            })*@
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.InsertAfter,
+
+                    })*@
             </td>
         </tr>
     }

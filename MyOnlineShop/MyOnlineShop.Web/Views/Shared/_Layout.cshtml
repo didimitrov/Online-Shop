@@ -23,7 +23,8 @@
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Store", "Index", "Store")</li>
-                    <li>@Html.Action("CartSummary","ShoppingCart")</li>
+                    <li>@Html.Action("CartSummary", "ShoppingCart")</li>
+                    <li>@Html.ActionLink("Admin","Index","StoreManager")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

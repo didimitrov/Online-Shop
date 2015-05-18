@@ -9,6 +9,9 @@ namespace MyOnlineShop.Web
         protected void Application_Start()
         {
             //System.Data.Entity.Database.SetInitializer(new Models.SampleData());
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
                                                                                                                         
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
