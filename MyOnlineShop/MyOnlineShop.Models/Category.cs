@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyOnlineShop.Models
@@ -16,6 +17,9 @@ namespace MyOnlineShop.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        [DisplayName("Category Img URL")]
+        public string CategoryImgUrl { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
 
