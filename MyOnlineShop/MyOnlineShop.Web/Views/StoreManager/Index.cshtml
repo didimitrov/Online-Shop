@@ -1,5 +1,17 @@
 ﻿@model IEnumerable<MyOnlineShop.Models.Product>
-
+@helper Truncate(string
+input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+ 
 @{
     ViewBag.Title = "Index";
 }
@@ -37,8 +49,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ProductArtUrl)
+        </td>*@
+        <td>
+            @Truncate(item.ProductArtUrl ,30)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
