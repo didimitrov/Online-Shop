@@ -17,6 +17,7 @@ namespace MyOnlineShop.Web.Controllers
             var minId = db.Products.Min(x => x.Id);
             ViewBag.ProductMinId = minId;
             return View(products);
+          //  return View();
         }
 
       

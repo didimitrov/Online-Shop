@@ -5,7 +5,7 @@ namespace MyOnlineShop.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public class Configuration : DbMigrationsConfiguration<MyOnlineShop.Data.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<MyOnlineShop.Data.ApplicationDbContext>
     {
         public Configuration()
         {

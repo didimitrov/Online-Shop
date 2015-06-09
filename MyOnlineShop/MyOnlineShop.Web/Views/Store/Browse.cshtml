@@ -36,6 +36,10 @@
                     <em>Price:</em>
                     <b> $ @item.Price</b>
                 </p>
+                <p>
+                    <em>Votes:</em>
+                    <b> @item.Votes.Count</b>
+                </p>
                 @*<div>
                     Votes: <span id="article-votes">@item.Votes.Count</span>
                     @if (User.Identity.IsAuthenticated)  //todo: CategoryViewModel
@@ -50,10 +54,15 @@
                             new { id = "vote-button", @class = "btn btn-danger" })
                     }
                 </div><br />*@
+                <div>
+                    @*<p>
+                        @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </p>*@
+                    <p>
+                        @Html.ActionLink(" See Details...", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    </p>
+                </div>
 
-                <p>
-                    @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.Id }, new { @class = "btn btn-primary" })
-                </p>
             </div>
         </div>
     </div>
