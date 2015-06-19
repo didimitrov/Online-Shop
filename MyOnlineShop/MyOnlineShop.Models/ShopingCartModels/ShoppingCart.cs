@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyOnlineShop.Data;
 
+
 namespace MyOnlineShop.Models.ShopingCartModels
 {
     public partial class ShoppingCart
@@ -92,7 +93,7 @@ namespace MyOnlineShop.Models.ShopingCartModels
                          select (int?)cartItems.Count).Sum();
             // Return 0 if all entries are null
             return count ?? 0;
-           
+
         }
 
         public decimal Total()

@@ -5,16 +5,9 @@
     ViewBag.Title = "Index";
 }
                      
-<h2>Enter!</h2>
-<div class="row">
-    <div class="col-xs-6 col-md-12">
-        <a href="#" class="thumbnail">
-            <img src="@Url.Content("http://s1.e-monsite.com/2010/07/08/04/cart.jpg")" alt="...">
-        </a>
-    </div>
-</div>
+
                      
-<h3>Browse Categories</h3>
+<h3>Our Categories</h3>
 <p>
     Select from @Model.Count()
     categories:
@@ -24,7 +17,7 @@
     {
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <a href="#"><img src="@category.CategoryImgUrl" alt="Alternate Text" style="min-height: 200px; max-width: 280px" /></a>
+                <a href="#" onclick="location.href='@Url.Action("Browse","Store",new{category = category.Name})'"><img src="@category.CategoryImgUrl" alt="Alternate Text" style="min-height: 200px; max-width: 280px" /></a>
                 
                 <div class="caption">
                     <h3>@Html.ActionLink(category.Name, "Browse", new { category = category.Name })</h3>

@@ -30,16 +30,12 @@ namespace MyOnlineShop.Web.Controllers
         public ActionResult Index()
         {
             var categories = _category.All().ToList();
-
-
-           
             return View(categories);
         }
 
         public ActionResult Browse(string category)
         {
             var categoryModel = _category.All().Include("Products").SingleOrDefault(x => x.Name==category);
-            //var categoryModel = new Category {Name = category};
             return View(categoryModel);
         }
         
@@ -60,7 +56,7 @@ namespace MyOnlineShop.Web.Controllers
                     ProductArtUrl = product.ProductArtUrl,
                     Title = product.Title,
                     //todo change db with repo
-                    UserCanVote = _vote.All().Any(pesho => pesho.VotedById == userId),
+                    UserCanVote = _vote.All().Any(pesho => pesho.VotedById != userId),
                     Votes = product.Votes.Count()
                 };
 

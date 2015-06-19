@@ -61,7 +61,7 @@ namespace MyOnlineShop.Web.Controllers
             return Json(results);
         }
 
-    
+
         [ChildActionOnly]
         public ActionResult CartSummary()
         {

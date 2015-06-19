@@ -21,7 +21,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Store", "Index", "Store")</li>
                     <li>@Html.Action("CartSummary", "ShoppingCart")</li>
                     <li>@Html.ActionLink("Admin","Index","StoreManager")</li>
@@ -31,12 +30,11 @@
         </div>
     </div>
     <div class="container body-content">
-        <br />
-        <div class="">
+       <div class="">
             @{Html.RenderAction("CategoriesMenu", "Store");}
 
         </div>
-        <hr />
+        <br />
         <div class="">
             @RenderBody()
             <hr />

@@ -5,29 +5,29 @@
 }
 
 <h2>Details</h2>
-<hr />
+
 <div class="row">
-    <div class="col-sm-6 col-md-6">
+    <div class="col-md-6">
         <div class="thumbnail">
             <img src="@Model.ProductArtUrl" alt="@Model.Title">
-            <div class="caption">
+            <div class="caption text-center">
                 <h3>@Html.ActionLink(Model.Title, "Details", new { id = Model.Id })</h3>
                 <p>
-                    <em>Name:</em>
+                    <em class="label label-info">Name:</em>
                     <b>@Model.Title</b>
                 </p>
                 <p>
-                    <em>Category:</em>
+                    <em class="label label-info">Category:</em>
                     <b>@Model.Category.Name</b>
                 </p>
                 <p>
-                    <em>Price:</em>
+                    <em class="label label-info">Price:</em>
                     <b> $ @Model.Price</b>
                 </p>
-                
                 <div>
-                    Votes: <span id="article-votes">@Model.Votes</span>
-                    @if (User.Identity.IsAuthenticated && Model.UserCanVote)
+                    <em class="label label-info">Votes:</em><span id="article-votes">@Model.Votes</span>
+                
+                @if (User.Identity.IsAuthenticated )
                     {
                         @Ajax.ActionLink("+", "Vote", new { id = Model.Id }, new AjaxOptions
                         {
@@ -37,9 +37,16 @@
                             OnSuccess = "hideVoteButton"
                         },
                             new { id = "vote-button", @class = "btn btn-success" })
+                    
                     }
+                else if (!User.Identity.IsAuthenticated)
+                {
+                    <br />
+                    <h4 class=" text-center text-danger alert alert-danger" role="alert">
+                        @Html.ActionLink("Log in to vote or shop!", "Login", "Account", null, new { @class = "alert-link" })
+                    </h4>
+                }
                 </div><br />
-
                 <p>
                     @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = Model.Id }, new { @class = "btn btn-danger" })
                 </p>

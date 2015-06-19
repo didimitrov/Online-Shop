@@ -4,7 +4,5 @@ namespace MyOnlineShop.Web.Controllers
 {
     public class BaseController : Controller
     {
-
-
     }
 }

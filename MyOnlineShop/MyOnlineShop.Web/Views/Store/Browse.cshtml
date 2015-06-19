@@ -8,7 +8,7 @@
 
 
 
-<h2>Browsing category: @Model.Name</h2>
+<h2>Category: @Model.Name</h2>
 
 <div class="row">
     @foreach (var item in Model.Products)
@@ -24,20 +24,13 @@
             <img src="@item.ProductArtUrl" alt="@item.Title">
             <div class="caption">
                 <h3>@Html.ActionLink(item.Title, "Details", new { id = item.Id })</h3>
-                <p>
-                    <em>Name:</em>
-                    <b>@item.Title</b>
-                </p>
-                <p>
-                    <em>Category:</em>
-                    <b>@item.Category.Name</b>
-                </p>
-                <p>
-                    <em>Price:</em>
+              
+               <p>
+                   <em class="label label-info">Price:</em>
                     <b> $ @item.Price</b>
                 </p>
                 <p>
-                    <em>Votes:</em>
+                    <em class="label label-info">Votes:</em>
                     <b> @item.Votes.Count</b>
                 </p>
                 @*<div>
@@ -59,7 +52,7 @@
                         @Html.ActionLink("Add to Cart", "AddToCart", "ShoppingCart", new { id = item.Id }, new { @class = "btn btn-danger" })
                     </p>*@
                     <p>
-                        @Html.ActionLink(" See Details...", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink(" See Details...", "Details", new { id = item.Id }, new { @class = "btn btn-success" })
                     </p>
                 </div>
 
